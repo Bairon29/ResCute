@@ -4,32 +4,48 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title></title>
-  <link rel="stylesheet" href="">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav><%= render 'partials/nav1'%> <br>
-        <%= render 'partials/dogs'%><br></nav>
-<%= @dog["status"]%><br>
-<%= @dog["id"]%>
-<%= @dog["name"]%><br>
-<img src="<%= @dog["image"]%>"><br>
+<%= render 'partials/nav1'%>
+<div class="row">
+  <div class="col-xs-6 col-md-5">
+<img src="<%= @dog["image"]%>">
+  </div>
+  <div class="col-xs-12 col-md-7">
+  <%if logged_in?%>
+  <h2>Would you like to adopt <%= @dog["name"]%>, <%= @current_user.first_name%>?</h2>
+  <%end%>
+  <br>
+<p>Status:<%= @dog["status"]%></p>
+<p>ID #: <%= @dog["id"]%></p>
+<p>Name: <%= @dog["name"]%></p>
+<p>Gender: <%= @dog["gender"]%></p>
+<p>OranizationID: <%= @dog["organisationid"]%></p>
+<p>Age: <%= @dog["age"]%></p>
+<p>Breed: <%= @dog["breed"]%></p>
+<p>Location(Zip Code): <%= @dog["locationzip"]%></p>
+  </div>
+</div>
 
-
-
-<% if logged_in? %>
-        Hi! <%= @current_user.first_name %>
-
+<div id = "loggedinbuttons">
+<%if logged_in?%>
 <%= form_for :pets, method: "post", url: {action: "create", :controller=>"pets", id: {:it => @dog["id"], :it2 => @current_user}} do |f|%>
 <%=f.submit "", :id => "heartbutton", "data-toggle" => "modal","data-target" => "#myModal" ,:class => "btn btn-primary btn-lg", :src => "https://s3.amazonaws.com/piktochartv2-dev/v2/uploads/3db760e7-d87f-4ca8-9298-1f805e6341a3/80ade3dc5ed8407dbafed25c4de4ee3ed026908a_original.png"%>
+<div id = "xbutton"><%= button_tag link_to image_tag('https://tindertrash.files.wordpress.com/2015/05/cropped-tinder-nope1.png', :id => "xbutton"), :back %></div>
 <%end%>
+<%end%>
+</div>
 
-<%end%>
+<div>
 <%if !logged_in?%>
-<button type="button" id = "heartbutton" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"><img id ="heart"  src="https://s3.amazonaws.com/piktochartv2-dev/v2/uploads/3db760e7-d87f-4ca8-9298-1f805e6341a3/80ade3dc5ed8407dbafed25c4de4ee3ed026908a_original.png"></button>
+  <button type="button" id = "heartbutton" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"><img id ="heart"  src="https://s3.amazonaws.com/piktochartv2-dev/v2/uploads/3db760e7-d87f-4ca8-9298-1f805e6341a3/80ade3dc5ed8407dbafed25c4de4ee3ed026908a_original.png"></button>
+  <button type="button" id = "xbutton" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"><img id ="xbutton"  src="https://tindertrash.files.wordpress.com/2015/05/cropped-tinder-nope1.png"></button>
 <%end%>
-<br><br>
-<!-- Login Modal -->
-<%if (!logged_in?)%>
+</div>
+
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -49,16 +65,25 @@
     </div>
   </div>
 </div>
-<%end%>
+
 <style type="text/css" media="screen">
+body{
+  background-color: rgb(225, 100, 67);
+}
+#loggedinbuttons{
+  float: left;
+  display: inline-block;
+}
+img{
+  height: 400px;
+  width: 400px;
+}
+.col-xs-12{
+  padding-top: 50px;
+}
 input[type="submit"]{
   background: url("https://s3.amazonaws.com/piktochartv2-dev/v2/uploads/3db760e7-d87f-4ca8-9298-1f805e6341a3/80ade3dc5ed8407dbafed25c4de4ee3ed026908a_original.png");
   background-size: cover;
-}
-#heart{
-  height: 100px;
-  width: 100px;
-  margin: -16px 0 0 -23px;
 }
 #heartbutton{
   height: 100px;
@@ -67,18 +92,20 @@ input[type="submit"]{
   border-radius: 100%;
   background-color: darkred;
 }
-#x{
-  height: 100px;
-  width: 100px;
-  margin: -16px 0 0 -23px;
-}
-#xbutton{
+#xbutton button{
   height: 100px;
   width: 100px;
   border: solid 8px black;
   border-radius: 100%;
   background-color: grey;
 }
+#xbutton img{
+  height: 80px;
+  width:  80px;
+  margin:  0 0 0 -5px;
+  border-radius: 100%;
+}
+
 </style>
 </body>
 </html>

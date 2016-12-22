@@ -32,16 +32,26 @@
       <%= f.password_field :password %> <br>
       <%= f.label :password_confirmation, "Confirm Password" %> <br>
       <%= f.password_field :password_confirmation %> <br><br>
-      <%= f.submit "Create Account", class: "btn btn-primary" %>
+      <%= f.submit "Create Account", class: "btn btn-primary", id: "signupbutton"%>
       <p>Already have an account? <%= link_to "Log In", login_path %></p>
     <% end %>
   </div>
 </div>
 </center>
 <style type="text/css" media="screen">
+body{
+  background-color: rgb(225, 100, 67);
+}
+h1{
+  color: rgb(124, 176, 233);
+}
 .row{
-  background-color: lightgrey;
-  width: 400px;
+  background-color: rgb(124, 176, 233);
+  width: 550px;
+}
+#signupbutton{
+  background-color: rgb(225, 100, 67);
+  color: rgb(124, 176, 233);
 }
 </style>
 

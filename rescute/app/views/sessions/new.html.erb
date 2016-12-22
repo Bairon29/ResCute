@@ -21,16 +21,26 @@
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
       <br><br>
-      <center><%= f.submit "Log in", class: "btn btn-primary" %></center>
+      <%= f.submit "Log in", class: "btn btn-primary", id: "loginbutton" %>
       <% end %>
-    <center><p>New user? <%= link_to "Sign up now!", signup_path %></p></center>
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
   </div>
 </div>
 </center>
 <style type="text/css" media="screen">
+body{
+  background-color: rgb(225, 100, 67);
+}
+h1{
+  color: rgb(124, 176, 233);
+}
 .row{
-  background-color: lightgrey;
-  width: 600px;
+  background-color: rgb(124, 176, 233);
+  width: 550px;
+}
+#loginbutton{
+  background-color: rgb(225, 100, 67);
+  color: rgb(124, 176, 233);
 }
 </style>
 </body>

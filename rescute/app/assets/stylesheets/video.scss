@@ -1,9 +1,28 @@
 // Place all the styles related to the video controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+  background-color: rgb(225, 100, 67);
+}
+.container{
+  margin: 0 auto;
+}
 #player {
-
   display: block;
   margin: 0 auto;
 }
-
+form {
+  text-align: center;
+}
+h1{
+  text-align: center;
+}
+#search{
+  font-size: 14pt;
+  padding: 10px;
+  margin: 10px;
+}
+#vidSearch {
+  @extend #search;
+  width: 510px;
+}

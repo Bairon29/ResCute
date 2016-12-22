@@ -1,4 +1,5 @@
 class VideosController < ApplicationController
+  # http://stackoverflow.com/questions/3364492/actioncontrollerinvalidauthenticitytoken
  skip_before_action :verify_authenticity_token
  attr_accessor :vidSearch
    #videos rendered here
@@ -24,4 +25,3 @@ class VideosController < ApplicationController
    render :template => "videos/index"
  end
 end
-

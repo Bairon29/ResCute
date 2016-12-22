@@ -1,23 +1,47 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 <% provide(:title, "Edit user") %>
 <h1>Update your profile</h1>
-
-<div class="row">
+<br><br>
+<center><div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for @user, method: 'put', url: {action: 'update'} do |f| %>
       <%= render 'shared/error_messages' %>
+      <br>
       <%= f.label :first_name %>
       <%= f.text_field :first_name, class: 'form-control' %>
       <%= f.label :last_name %>
       <%= f.text_field :last_name, class: 'form-control' %>
       <%= f.label :gender %>
-      <%= f.select :gender, User::GENDER_TYPES, class: 'form-control' %>
+      <%= f.select :gender, User::GENDER_TYPES, class: 'form-control' %><br>
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
+      <br>
+      <%= f.submit "Save changes", class: "btn btn-primary", id: "editbutton" %>
+      <br><br>
     <% end %>
   </div>
-</div>
+</div></center>
+
+<style type="text/css" media="screen">
+body{
+  background-color: rgb(225, 100, 67);
+}
+h1{
+  color: rgb(124, 176, 233);
+}
+.row{
+  background-color: rgb(124, 176, 233);
+  width: 550px;
+}
+#editbutton{
+  background-color: rgb(225, 100, 67);
+  color: rgb(124, 176, 233);
+}
+</style>

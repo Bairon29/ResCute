@@ -1,22 +1,38 @@
 <% provide(:title, @user.first_name,) %> <br><br><br>
 <%= render 'partials/nav1'%> <br>
 <%= render 'partials/dogs'%><br>
-Hi! <%= @user.first_name%> <br><br>
-<p>What would you like to do?<p>
-<%= @user.email%>
-
-<p>Update Account <%= link_to "Update Account", edit_user_path(current_user)%></p>
+<h1>Welcome <%= @user.first_name%>!</h1>
+<br><br>
+<div id = "userinfo">
+<h3>What would you like to do?</h3>
+<p>Name: <%= @user.first_name%> <%= @user.last_name%></p>
+<p>Email: <%= @user.email%></p>
+<p>Update Account: <%= link_to "Update Account", edit_user_path(current_user)%></p>
+<p><%= link_to "Log out", logout_path, method: "delete" %></p><br>
+</div>
 <br>
-<br>
-
-<p>Log out <%= link_to "Log out", logout_path, method: "delete" %></p><br>
+<hr>
 
 <%@user.pets.each do |dog|%>
-<%=dog[:name]%>
-<%= dog[:gender]%>
-<img src="<%=dog.image%>"><br><br>
-<%= link_to 'give up', pet_path(dog),
-            data: {:confirm => 'Are you sure?'}, :method => "delete", url: {action: "destroy", :controller => "pets"} %>
+<h1><%=dog[:name]%></h1>
+<h3><%= dog[:gender]%></h3>
+<div id = "dogimage"><img src="<%=dog.image%>"></div>
+<br>
+<div id = "giveup"><%= link_to 'Give up', pet_path(dog), data: {:confirm => 'Are you sure?'}, :method => "delete", url: {action: "destroy", :controller => "pets"} %></div>
 <br><br>
 <%end%>
 
+<style type="text/css" media="screen">
+#userinfo{
+  text-align: center;
+}
+#dogimage{
+  text-align: center;
+}
+h1, h3{
+  text-align: center;
+}
+#giveup{
+  text-align: center;
+}
+</style>

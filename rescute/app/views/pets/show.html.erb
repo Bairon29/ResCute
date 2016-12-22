@@ -10,8 +10,22 @@
 
 <%= render 'partials/nav1'%> <br>
 <%= render 'partials/dogs'%><br>
-  <%= @dog.name%>
-  <%= @dog.gender%>
+
+<div id = "container">
+<div id = "data">
+<h1> You've just adopted <%= @dog.name%>! </h1>
+</div>
+<img src = "<%= @dog.image%>">
+</div>
 
 </body>
 </html>
+<style>
+body{
+  background-color: rgb(225, 100, 67);
+}
+#container{
+  text-align: center;
+  padding-top: 50px;
+}
+</style>

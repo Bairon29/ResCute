@@ -1,5 +1,18 @@
  <% if logged_in? %>
  <%= form_for :pets, method: "get", url: {action: "index", :controller=>"pets",  id: @current_user }  do |f|%>
-<%=f.submit "user pets"%>
+<%=f.submit "User's Pets", id: "userspets"%>
 <%end%>
- <%end%>
+<%end%>
+
+<style type="text/css" media="screen">
+#userspets{
+  border: solid 8px black;
+  border-radius: 100%;
+  color: rgb(225, 100, 67);
+  font-weight: bold;
+  font-size: 10pt;
+  background-color: rgb(124, 176, 233);
+  height: 100px;
+  width: 100px;
+}
+</style>

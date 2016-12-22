@@ -1,9 +1,42 @@
-<%= link_to 'Available Doggies', root_path %><br>
- <% if !logged_in? %>
-<%= link_to 'login', "/login" %><br>
-<%= link_to 'sign up', "/signup" %>
+<% if !logged_in? %>
+<nav>
+<ul>
+<li><%= link_to 'Videos', "/videos"%></li>
+<%= link_to image_tag("RescuteLogo.png", :id => "RescuteLogo"), root_path %>
+<li><%= link_to 'Login', "/login" %></li>
+<li><%= link_to 'Sign up', "/signup" %></li>
+</ul>
+</nav>
 <%end%>
- <% if logged_in? %>
-<%= link_to "Watch cute video", "/videos#index", url: {action: "index", :controller => "videos"}%><br>
-<%= link_to 'User Account', user_path(@current_user) %><br>
+
+<% if logged_in? %>
+<nav>
+<ul>
+<li><%= link_to 'User Account', user_path(@current_user) %></li>
+<%= link_to image_tag("RescuteLogo.png", :id => "RescuteLogo"), root_path %>
+<li><%= link_to 'Videos', "/videos"%></li>
+<li><%= link_to "Log out", logout_path, method: "delete" %></li>
+</ul>
+</nav>
 <%end%>
+<style type="text/css" media="screen">
+#RescuteLogo{
+  height: 100px;
+  width: 200px;
+}
+nav{
+  list-style-type: none;
+  text-align: center;
+  background-color: red;
+
+  height: 100px;
+  margin: 0 auto;
+  box-shadow: 0 9px 3px -5px #000000;
+}
+nav ul{
+  display: inline;
+}
+nav li{
+  display: inline-block;
+}
+</style>
